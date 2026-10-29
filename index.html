@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shree Ram Electrical | Gurgaon</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --site-primary: #d89a27;
+  --site-secondary: #142238;
+  --site-background: #f5f3ee;
+  --site-on-primary: #17130b;
+  --site-on-secondary: #ffffff;
+  --site-on-background: #1e2937;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: light-dark(#ffffff, #1d2430);
+  --surface-soft: light-dark(#ebe7de, #262f3d);
+  --text-muted: light-dark(#5c6673, #bdc5d0);
+  --line: light-dark(#dedbd3, #3b4554);
+  --shadow: 0 14px 35px rgba(18, 28, 43, .09);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 20; background: light-dark(rgba(255,255,255,.94), rgba(22,29,40,.95)); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+.nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.logo { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: calc(12px * var(--site-radius-scale)); background: var(--site-primary); color: var(--site-on-primary); font-weight: 950; font-size: 18px; letter-spacing: -1px; }
+.brand-name { font-family: var(--site-font-heading); font-weight: 900; letter-spacing: -.6px; line-height: 1.1; }
+.brand-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 1.7px; margin-top: 4px; }
+.navlinks { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 700; }
+.navlinks a:hover { color: var(--site-primary); }
+.btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; border: 0; border-radius: calc(10px * var(--site-radius-scale)); padding: 13px 18px; font-weight: 800; cursor: pointer; transition: transform .15s ease, opacity .15s ease; font: inherit; font-size: 14px; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--site-primary); color: var(--site-on-primary); }
+.btn-dark { background: var(--site-secondary); color: var(--site-on-secondary); }
+.btn-outline { border: 1px solid var(--line); background: transparent; color: var(--site-on-background); }
+.hero { background: var(--site-secondary); color: #fff; position: relative; overflow: hidden; }
+.hero:after { content: ""; position: absolute; width: 440px; height: 440px; right: -110px; top: -160px; border: 1px solid rgba(216,154,39,.32); border-radius: 50%; box-shadow: 0 0 0 38px rgba(216,154,39,.06), 0 0 0 80px rgba(216,154,39,.04); opacity: var(--site-decoration-opacity); pointer-events: none; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 50px; align-items: center; padding: calc(76px * var(--site-spacing-scale)) 0; position: relative; z-index: 1; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--site-primary); font-weight: 900; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+.dot { width: 7px; height: 7px; background: var(--site-primary); border-radius: 50%; }
+h1,h2,h3,p { margin-top: 0; }
+h1 { font-family: var(--site-font-heading); font-size: clamp(38px, 5vw, 64px); line-height: 1.03; letter-spacing: -2.5px; margin: 20px 0; max-width: 700px; }
+h1 span { color: var(--site-primary); }
+.hero p { color: #d7deea; font-size: 17px; line-height: 1.75; max-width: 570px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.hero-card { border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.07); border-radius: calc(24px * var(--site-radius-scale)); padding: 27px; box-shadow: 0 20px 50px rgba(0,0,0,.13); }
+.hero-card .big-icon { width: 72px; height: 72px; display: grid; place-items: center; background: var(--site-primary); color: var(--site-on-primary); border-radius: 20px; font-size: 34px; margin-bottom: 24px; }
+.hero-card h2 { font-size: 23px; margin-bottom: 10px; }
+.hero-card p { font-size: 14px; margin-bottom: 20px; }
+.quick-list { display: grid; gap: 12px; }
+.quick-row { display: flex; gap: 12px; align-items: center; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.15); font-size: 13px; }
+.quick-row strong { color: var(--site-primary); }
+section { padding: calc(72px * var(--site-spacing-scale)) 0; }
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 30px; }
+.section-head h2 { font-family: var(--site-font-heading); font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -1.2px; margin: 10px 0 0; }
+.section-head p { color: var(--text-muted); max-width: 440px; margin-bottom: 3px; line-height: 1.7; }
+.kicker { color: #a76f0c; font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: calc(16px * var(--site-radius-scale)); padding: 22px; box-shadow: var(--shadow); min-width: 0; }
+.product-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--surface-soft); font-size: 25px; margin-bottom: 17px; }
+.card h3 { font-size: 17px; margin-bottom: 8px; }
+.card p { color: var(--text-muted); font-size: 13px; line-height: 1.65; margin-bottom: 0; }
+.services { background: var(--surface-soft); }
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.service-card { background: var(--surface); border: 1px solid var(--line); border-radius: calc(16px * var(--site-radius-scale)); padding: 24px; }
+.service-top { display: flex; align-items: start; justify-content: space-between; gap: 15px; }
+.service-card h3 { font-size: 18px; margin-bottom: 7px; }
+.service-card p { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+.price { white-space: nowrap; background: var(--site-primary); color: var(--site-on-primary); border-radius: 9px; padding: 7px 10px; font-weight: 900; font-size: 13px; }
+.note { color: var(--text-muted); font-size: 12px; line-height: 1.7; margin-top: 20px; }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.why { padding: 24px 0; border-top: 2px solid var(--site-primary); }
+.why h3 { margin-bottom: 8px; }
+.why p { color: var(--text-muted); line-height: 1.7; font-size: 14px; margin-bottom: 0; }
+.contact { background: var(--site-secondary); color: #fff; }
+.contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 45px; align-items: start; }
+.contact h2 { font-size: clamp(30px, 4vw, 45px); letter-spacing: -1.4px; margin: 12px 0 15px; }
+.contact-intro { color: #c8d0dc; line-height: 1.75; }
+.contact-cards { display: grid; gap: 12px; }
+.contact-item { display: flex; align-items: start; gap: 14px; padding: 18px; border-radius: 13px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); }
+.contact-icon { width: 38px; height: 38px; display: grid; place-items: center; flex: 0 0 38px; border-radius: 10px; background: var(--site-primary); color: var(--site-on-primary); font-size: 18px; }
+.contact-item small { display: block; color: #bdc7d6; margin-bottom: 5px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; }
+.contact-item strong { display: block; line-height: 1.5; font-size: 14px; overflow-wrap: anywhere; }
+.contact-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+footer { background: light-dark(#fff, #171d27); border-top: 1px solid var(--line); padding: 22px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--text-muted); font-size: 12px; }
+.footer-inner strong { color: var(--site-on-background); }
+.mobile-menu { display: none; }
+@media (max-width: 850px) {
+  .navlinks { gap: 13px; }
+  .navlinks a:not(.btn) { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; padding: 55px 0; }
+  .hero-card { max-width: 520px; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 28px, 1120px); }
+  .nav { min-height: 68px; }
+  .brand-sub { letter-spacing: 1px; font-size: 9px; }
+  .navlinks .btn { padding: 10px 12px; font-size: 12px; }
+  h1 { letter-spacing: -1.5px; }
+  .hero p { font-size: 15px; }
+  section { padding: 52px 0; }
+  .section-head { display: block; }
+  .section-head p { margin-top: 12px; }
+  .cards { gap: 10px; }
+  .card { padding: 16px; }
+  .card h3 { font-size: 15px; }
+  .service-grid, .why-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 19px; }
+  .service-top { flex-direction: column; }
+  .footer-inner { align-items: start; flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Shree Ram Electrical home">
+      <div class="logo">SR</div>
+      <div><div class="brand-name">SHREE RAM ELECTRICAL</div><div class="brand-sub">LIGHTING • FANS • ELECTRICALS</div></div>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#products">Products</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="https://wa.me/919649366366?text=Namaste%20Shree%20Ram%20Electrical%2C%20mujhe%20product%20ya%20service%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank" rel="noopener">WhatsApp Us ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Your local electrical partner in Gurgaon</div>
+      <h1>Bright ideas.<br><span>Reliable electrical</span> solutions.</h1>
+      <p>Fans, lights, electrical products aur installation services — apne ghar aur flat ke liye sahi products aur practical support ke liye Shree Ram Electrical se sampark karein.</p>
+      <div class="actions"><a class="btn btn-primary" href="#products">Explore Products ↓</a><a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.35)" href="tel:+919649366366">☎ Call Shop</a></div>
+    </div>
+    <aside class="hero-card">
+      <div class="big-icon">✦</div>
+      <h2>Electrical products & fitting</h2>
+      <p>New flat setup, replacement products aur installation ke liye apni requirement share karein.</p>
+      <div class="quick-list">
+        <div class="quick-row"><strong>01</strong><span>Fans, exhaust fans & lighting</span></div>
+        <div class="quick-row"><strong>02</strong><span>Switches, boards & accessories</span></div>
+        <div class="quick-row"><strong>03</strong><span>Installation and fitting services</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+<section id="products">
+  <div class="wrap">
+    <div class="section-head"><div><div class="kicker">Our product range</div><h2>Products for every space.</h2></div><p>Home, flat aur everyday electrical needs ke liye products. Brand, model, availability aur latest price ke liye call ya WhatsApp karein.</p></div>
+    <div class="cards">
+      <article class="card"><div class="product-icon">🌀</div><h3>Crompton Fans</h3><p>Ceiling fans aur air circulation solutions.</p></article>
+      <article class="card"><div class="product-icon">🌀</div><h3>Polycab Fans</h3><p>Home use ke liye fan options.</p></article>
+      <article class="card"><div class="product-icon">💡</div><h3>Tube Lights</h3><p>Indoor lighting aur replacement lights.</p></article>
+      <article class="card"><div class="product-icon">🔆</div><h3>Surface Lights</h3><p>Room, kitchen aur other spaces ke liye.</p></article>
+      <article class="card"><div class="product-icon">🌬️</div><h3>Exhaust Fans</h3><p>Ventilation ke liye exhaust fan options.</p></article>
+      <article class="card"><div class="product-icon">🔌</div><h3>Electric Boards</h3><p>Switches, boards aur electrical fittings.</p></article>
+      <article class="card"><div class="product-icon">🔔</div><h3>Door Bells & Holders</h3><p>Daily-use electrical accessories.</p></article>
+      <article class="card"><div class="product-icon">🚿</div><h3>Geyser & RO</h3><p>Geyser, RO aur related product requirements.</p></article>
+      <article class="card"><div class="product-icon">🪟</div><h3>Curtain Rods</h3><p>Home fitting ke liye curtain rod options.</p></article>
+      <article class="card"><div class="product-icon">✨</div><h3>Fancy Lights</h3><p>Decorative lighting requirements ke liye poochhein.</p></article>
+      <article class="card"><div class="product-icon">🧰</div><h3>Electrical Accessories</h3><p>Flat setup aur repair ke liye common items.</p></article>
+      <article class="card"><div class="product-icon">＋</div><h3>Other Products</h3><p>Koi specific item chahiye? Humein list bhejein.</p></article>
+    </div>
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head"><div><div class="kicker">Installation & fitting</div><h2>Services and charges.</h2></div><p>Listed charges aapke diye hue rates par based hain. Special fitting, material aur site conditions ke hisaab se final amount confirm karein.</p></div>
+    <div class="service-grid">
+      <article class="service-card"><div class="service-top"><div><h3>Ceiling Fan Installation</h3><p>Ceiling fan fitting</p></div><div class="price">₹200 / fan</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Normal Light Fitting</h3><p>Per light point</p></div><div class="price">₹70 / point</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Fancy Light Fitting</h3><p>Per light point</p></div><div class="price">₹100 / point</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Exhaust Fan + Mirror Cutting</h3><p>Fitting with mirror cutting</p></div><div class="price">₹300</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Curtain Rod Fitting</h3><p>Per rod</p></div><div class="price">₹150 / rod</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>RO Installation</h3><p>Installation service</p></div><div class="price">₹350</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Geyser Installation</h3><p>Installation service</p></div><div class="price">₹500</div></div></article>
+      <article class="service-card"><div class="service-top"><div><h3>Other Electrical Work</h3><p>Fan, light, point aur flat fitting requirements</p></div><a class="price" href="#contact">Ask Rate ↗</a></div></article>
+    </div>
+    <p class="note">Note: Listed rates installation labour charges hain; product, extra wiring, spare parts, drilling/civil work, travel or unusual site requirements extra ho sakte hain. Final charges booking se pehle confirm karein.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="section-head"><div><div class="kicker">Why Shree Ram Electrical</div><h2>Helpful service, clear communication.</h2></div></div>
+    <div class="why-grid">
+      <div class="why"><h3>01 / Product guidance</h3><p>Apni room size, requirement aur budget batayein; available options ke baare mein poochhein.</p></div>
+      <div class="why"><h3>02 / Flat setup support</h3><p>New flat ke fan, lights, exhaust aur other fitting needs ke liye requirement discuss karein.</p></div>
+      <div class="why"><h3>03 / Direct contact</h3><p>Call ya WhatsApp par item list, quantity, product rates aur service charges confirm karein.</p></div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div><div class="eyebrow"><span class="dot"></span> Get in touch</div><h2>Need a product or installation?</h2><p class="contact-intro">Apni product list ya installation requirement WhatsApp karein. Humse current price, availability aur service timing confirm karein.</p><div class="contact-actions"><a class="btn btn-primary" href="https://wa.me/919649366366?text=Namaste%20Shree%20Ram%20Electrical%2C%20mujhe%20quotation%20chahiye." target="_blank" rel="noopener">WhatsApp for Quote ↗</a><a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.35)" href="tel:+919310866366">Call Alternate Number</a></div></div>
+    <div class="contact-cards">
+      <div class="contact-item"><div class="contact-icon">☎</div><div><small>Call us</small><strong><a href="tel:+919649366366">96493 66366</a><br><a href="tel:+919310866366">93108 66366</a></strong></div></div>
+      <div class="contact-item"><div class="contact-icon">⌖</div><div><small>Shop address</small><strong>Shop, G/29, Signature Global Millennium 3,<br>Sector 37D, Gurgaon</strong></div></div>
+      <div class="contact-item"><div class="contact-icon">⌂</div><div><small>Additional address</small><strong>Flat No. A3/305, Habitat 102,<br>Sector 102, Gurgaon</strong></div></div>
+      <div class="contact-item"><div class="contact-icon">◷</div><div><small>Business hours</small><strong>Please call to confirm current shop and service timings.</strong></div></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><div><strong>SHREE RAM ELECTRICAL</strong><br>Lighting • Fans • Electricals • Installation</div><div>© <span id="year">2026</span> Shree Ram Electrical. All rights reserved.</div></div></footer>
+</div>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
